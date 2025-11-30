@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+
+<h:head>
+    <title>JSF Test Page</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:panelGroup>
+            <h:outputText value="Enter your name:" />
+            <br/><br/>
+            <h:inputText value="#{testBean.name}" />
+            <br/><br/>
+            <h:commandButton value="Say Hello" action="#{testBean.sayHello}" />
+        </h:panelGroup>
+
+        <br/><br/>
+
+        <h:outputText value="#{testBean.message}" />
+    </h:form>
+</h:body>
+
+</html>
