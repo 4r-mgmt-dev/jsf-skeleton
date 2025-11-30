@@ -34,7 +34,7 @@
   </dependencies>
   
   <build>
-        <finalName>skeleton</finalName>
+        <finalName>jsf-skeleton</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
