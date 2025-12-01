@@ -141,7 +141,7 @@ Add a ```faces-config.xml``` file
 
 </details>
 
-(optional) - Instead of using 'faces-config.xml' file create a 'FacesAppConfig.java' class with annotations '@FacesConfig' and '@ApplicationScoped' can be used.
+**(optional)** - Instead of using ```faces-config.xml``` file create a ```FacesAppConfig.java``` class with annotations ```@FacesConfig``` and ```@ApplicationScoped``` can be used.
 
 ```java
 @FacesConfig
