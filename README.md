@@ -17,7 +17,7 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
 
 ## Development Tools
 
-- **JDK Java 11+** (Java Development Kit)
+- **JDK 11+:** (Java Development Kit)
 - **IDE: Eclipse**
 - **Build Tool: Maven**
 	- use the pom.xml to manage dependencies and build (configure mvn compiler for Java 11 or 17)
