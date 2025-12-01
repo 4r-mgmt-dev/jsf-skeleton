@@ -1,17 +1,19 @@
-# JSF-Skeleton
+# Jakarta-Faces-Skeleton
 
 ## Overview
 
 This is a *Skeleton* for an **Jakarta-Faces** application, based on **Jakarta EE** technologies.
-* The **goal** is to show the necessary structure with all required tools and (MAVEN) Dependencies for any **Web Application** project.
+* The **goal** is to show the necessary structure with all required tools and (MAVEN) dependencies for any **Web Application** project.
 
 ## Quick Start
 
 The application can be started as a *WAR* on a Jakarta EE compliant server (e.g., WildFly, Payara) or locally as a *JAR* (with embedded WildFly), using an H2 in-memory database.
 
-1. run in cmd: ``mvn install  -DskipTests`` - jee server application - as deployable  **.war**
-* or **optional:** ``mvn package`` - standalone application - as executable **.jar**
+1. run in cmd: ``mvn install`` to build deployable  **.war** file
 2. then browse: [http://localhost:8080/index.xhtml](http://localhost:8080/index.xhtml)
+
+
+- (**optional only for WildFly:** ``mvn package`` for standalone application as executable **.jar**)
 
 ## Development Tools
 
@@ -28,9 +30,9 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
 - **Servlet** (Jakarta Servlet 6.0 / web-app 6.0)
 - **CDI 4.0** (Context and Dependency Injection)
 	- Implementation: Weld 5
- - **JSF 4.0** (Java Server Faces or Jakarta-Faces)
+- **JSF 4.0** (Java Server Faces or Jakarta-Faces)
 	- Implementation: Mojarra 4.0 or MyFaces 4.0
-- **EL 5.0** (Expression Language) 
+- **EL 5.0** (Expression Language - provides an important mechanism for enabling the presentation layer)
 - **JPA 3.1** (Java Persistence API) as Persistence Layer 
 	- Implementation: Hibernate 6.1 - provide persistence
 - **Java EE Server:**
@@ -56,10 +58,12 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
  └── README.md
  ```
 
-**TODO: describe shortly each folder** - Why it is requiered  
-**TODO: describe shortly each file** - Why it is requiered
+**TODO: describe shortly each folder** - Why it is required  
+**TODO: describe shortly each file** - Why it is required
 
 ## Application-Dependencies (pom.xml)
+
+*  Open the details section to see the required dependencies:
 
 **TODO: explain of nessesary dependencies of pom.xml in the details section**
 
@@ -68,14 +72,17 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
 ```xml
 
 
+
 ```
 
 </details>
 
 ## Persistence-Application (persistence.xml)
 
-add a ```persistence.xml``` file in to the ```resources/META-INF``` folder
-- Specify the connection properties according to JPA specification of ```persistence.xml``` file 
+Add a ```persistence.xml``` file in to the ```resources/META-INF``` folder
+* Specify the connection properties according to JPA specification of ```persistence.xml``` file 
+
+Open the details section to see the required properties:
 
 **TODO: explain the persistence.xml**
 
@@ -90,11 +97,23 @@ add a ```persistence.xml``` file in to the ```resources/META-INF``` folder
 
 ## Web-Application (web.xml)
 
-Add the **web.xml** file in to the  ```webapp/WEB-INF``` folder
-The **web.xml** to (define and map your FacesServlet)
+Add the ```web.xml``` file in to the  ```webapp/WEB-INF``` folder
+* Open the details section to see the required Servlet-Mapping and configuration:
+
+**TODO: add web.xml describe shortly**
+
+<details>
+	
+```xml
+
+
+```
+
+</details>
+
 
 ## CDI-Application (beans.xml)
-Add an empty 'beans.xml' file.
+Add an empty ```beans.xml``` file.
 
 **TODO: sample of persistence.xml**
 
@@ -109,7 +128,7 @@ Add an empty 'beans.xml' file.
 
 ## Fases-Application (faces-config.xml)
 
-Add an empty 'faces-config.xml' file
+Add a ```faces-config.xml``` file
 
 **TODO: sample of persistence.xml**
 
