@@ -128,7 +128,7 @@ Add an empty 'faces-config.xml' file
 @FacesConfig
 @ApplicationScoped
 public class FacesAppConfig {
-	// remplacemant of 'faces-config.xml' file
+	// replacement of 'faces-config.xml' file
 }
 ```
 
