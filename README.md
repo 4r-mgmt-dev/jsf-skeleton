@@ -145,7 +145,7 @@ To enable the **Web-Application**, add the ```web.xml``` file in to the  ```weba
 
 To enable, add an empty ```beans.xml``` file in to the  ```webapp/WEB-INF``` folder
 
-**TODO: sample of persistence.xml**
+**TODO: sample of beans.xml**
 
 <details>
 	
@@ -175,7 +175,7 @@ The the (Http) requests of Faces are handled in a lifecycle with 6 phases:
    
 To enable **Faces** application, add a ```faces-config.xml``` file in to the  ```webapp/WEB-INF``` folder.
 
-**TODO: sample of persistence.xml**
+**TODO: sample of faces-config.xml**
 
 <details>
 	
