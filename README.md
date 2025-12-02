@@ -21,6 +21,8 @@
 This is a *Skeleton* for an **Jakarta-Faces** application, based on **Jakarta EE** technologies.
 * The **goal** is to show the necessary structure with all required tools and (MAVEN) dependencies for any **Web Application** project.
 
+---
+
 ## Quick Start
 
 The application can be started as a *WAR* on a Jakarta EE compliant server (e.g., WildFly, Payara) or locally as a *JAR* (with embedded WildFly), using an H2 in-memory database.
@@ -34,13 +36,11 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
 
 ## Development Tools
 
-- **JDK 11+:** (Java Development Kit)
-- **IDE: Eclipse** download: "https://www.eclipse.org/downloads/packages/"
-- **Build Tool: Maven** download: "https://maven.apache.org"
-	- use the pom.xml to manage dependencies and build (configure mvn compiler for Java 11 or 17)
-	- 'mvn help:effective-pom' can be useful
-- **Repository: Git**
-- **Repository: GitHub/GitLab/BitBucket**
+- **JDK 11+:** (Java Development Kit) [download](https://www.oracle.com/de/java/technologies/downloads)
+- **IDE: Eclipse**: (Integrated Development Environment) [download](https://www.eclipse.org/downloads/packages/)
+- **Build Tool: Maven** [download](https://maven.apache.org)
+- **Versioning System: Git** 
+- **Repository: GitHub** 
 
 ---
 
@@ -105,7 +105,7 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
 
 ## Persistence-Application
 
-Add a ```persistence.xml``` file in to the ```resources/META-INF``` folder
+To enable **Persistence-Application**, add a ```persistence.xml``` file in to the ```resources/META-INF``` folder
 * Specify the connection properties according to JPA specification of ```persistence.xml``` file 
 
 Open the details section to see the required properties:
@@ -125,7 +125,7 @@ Open the details section to see the required properties:
 
 ## Web-Application
 
-Add the ```web.xml``` file in to the  ```webapp/WEB-INF``` folder
+To enable the **Web-Application**, add the ```web.xml``` file in to the  ```webapp/WEB-INF``` folder
 * Open the details section to see the required Servlet-Mapping and configuration:
 
 **TODO: add web.xml describe shortly**
@@ -142,7 +142,8 @@ Add the ```web.xml``` file in to the  ```webapp/WEB-INF``` folder
 ---
 
 ## CDI-Application
-Add an empty ```beans.xml``` file in to the  ```webapp/WEB-INF``` folder
+
+To enable, add an empty ```beans.xml``` file in to the  ```webapp/WEB-INF``` folder
 
 **TODO: sample of persistence.xml**
 
@@ -159,7 +160,20 @@ Add an empty ```beans.xml``` file in to the  ```webapp/WEB-INF``` folder
 
 ## Fases-Application
 
-Add a ```faces-config.xml``` file in to the  ```webapp/WEB-INF``` folder
+Java Server Faces is a web application framework (built on top of the Servlet API) that uses facelets and allow building **XHTML web-pages**, **templates**, **managing validation** and **navigation** as well as communication with Java Beans by using **Context and Dependency Injection** (CDI). It seperates the UI (**.xhtml**) and the logic (**Java Beans**) and allows data exchange through CDI and Expression Language.
+
+The the (Http) requests of Faces are handled in a lifecycle with 6 phases:
+
+```
+1. Restoring the component tree
+2. Applying (and converting) request values
+3. Process Validation
+4. Updating Model Values
+5. Invoking the application
+6. Rendering the response
+```
+   
+To enable **Faces** application, add a ```faces-config.xml``` file in to the  ```webapp/WEB-INF``` folder.
 
 **TODO: sample of persistence.xml**
 
@@ -172,7 +186,7 @@ Add a ```faces-config.xml``` file in to the  ```webapp/WEB-INF``` folder
 
 </details>
 
-**(optional)** - Instead of using ```faces-config.xml``` file, a programmatic approche can be used, there for create a class e.g. ```FacesAppConfig.java``` with annotations ```@FacesConfig``` and ```@ApplicationScoped```.
+**(optional)** - Instead of using ```faces-config.xml``` file, a programmatic approche can be used. There for create a class e.g. ```FacesAppConfig.java``` with annotations ```@FacesConfig``` and ```@ApplicationScoped```. Even this empty class enables JSF with modern features.
 
 ```java
 @FacesConfig
@@ -181,6 +195,12 @@ public class FacesAppConfig {
 	// replacement of 'faces-config.xml' file
 }
 ```
+
+* For Filters and Listeners new classes with the annotations @WebFilter and @WebListener are used.
+* Beans are used for implicit navigation. faces-config can be used for explicit navigation.
+
+Regardless of the approach an empty ```beans.xml``` is also necessary (same folder as ```web.xml```).  
+A ```faces-config.xml``` is not needed in modern projects unless for explicit navigation.  
 
 ---
 
