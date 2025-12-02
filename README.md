@@ -1,5 +1,21 @@
 # Jakarta-Faces-Skeleton
 
+**Table of Content**
+
+* [Overview](#overview)
+* [Quick Start](#quick-start)
+* [Development Tools](#development-tools)
+* [Jakarta Technology](#jakarta-technology)
+* [Project Structure](#project-structure)
+* [Maven-Dependencies](#maven-dependencies)
+* [Persistence-Application](#persistence-application)
+* [Web-Application](#web-application)
+* [CDI-Application](#cdi-application)
+* [Fases-Application](#fases-application)
+* [Test-Application](#test-application)
+
+---
+
 ## Overview
 
 This is a *Skeleton* for an **Jakarta-Faces** application, based on **Jakarta EE** technologies.
@@ -12,17 +28,21 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
 1. run in cmd: ``mvn install`` to build deployable  **.war** file
 2. then browse: [http://localhost:8080/index.xhtml](http://localhost:8080/index.xhtml)
 
-
 - (**optional only for WildFly:** ``mvn package`` for standalone application as executable **.jar**)
+
+---
 
 ## Development Tools
 
 - **JDK 11+:** (Java Development Kit)
-- **IDE: Eclipse**
-- **Build Tool: Maven**
+- **IDE: Eclipse** download: "https://www.eclipse.org/downloads/packages/"
+- **Build Tool: Maven** download: "https://maven.apache.org"
 	- use the pom.xml to manage dependencies and build (configure mvn compiler for Java 11 or 17)
 	- 'mvn help:effective-pom' can be useful
-- **Repository: Git + GitHub/GitLab/BitBucket**
+- **Repository: Git**
+- **Repository: GitHub/GitLab/BitBucket**
+
+---
 
 ## Jakarta Technology
 
@@ -39,6 +59,8 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
 	- Implementation: Wildfly 27.0.1 - For other compatible versions of dependencies see:
 	- "https://www.wildfly.org/news/2022/11/09/WildFly-27-Final-is-released/"
 	- "https://mvnrepository.com/artifact/org.wildfly.core/wildfly-core-component-matrix/27.0.1.Final"
+
+---
 
 ## Project Structure
 
@@ -61,9 +83,11 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
 **TODO: describe shortly each folder** - Why it is required  
 **TODO: describe shortly each file** - Why it is required
 
-## Application-Dependencies (pom.xml)
+---
 
-*  Open the details section to see the required dependencies:
+## Maven-Dependencies
+
+*  Open the details section to see the ```pom.xml``` file with the required dependencies:
 
 **TODO: explain of nessesary dependencies of pom.xml in the details section**
 
@@ -77,7 +101,9 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
 
 </details>
 
-## Persistence-Application (persistence.xml)
+---
+
+## Persistence-Application
 
 Add a ```persistence.xml``` file in to the ```resources/META-INF``` folder
 * Specify the connection properties according to JPA specification of ```persistence.xml``` file 
@@ -95,7 +121,9 @@ Open the details section to see the required properties:
 
 </details>
 
-## Web-Application (web.xml)
+---
+
+## Web-Application
 
 Add the ```web.xml``` file in to the  ```webapp/WEB-INF``` folder
 * Open the details section to see the required Servlet-Mapping and configuration:
@@ -111,9 +139,10 @@ Add the ```web.xml``` file in to the  ```webapp/WEB-INF``` folder
 
 </details>
 
+---
 
-## CDI-Application (beans.xml)
-Add an empty ```beans.xml``` file.
+## CDI-Application
+Add an empty ```beans.xml``` file in to the  ```webapp/WEB-INF``` folder
 
 **TODO: sample of persistence.xml**
 
@@ -126,9 +155,11 @@ Add an empty ```beans.xml``` file.
 
 </details>
 
-## Fases-Application (faces-config.xml)
+---
 
-Add a ```faces-config.xml``` file
+## Fases-Application
+
+Add a ```faces-config.xml``` file in to the  ```webapp/WEB-INF``` folder
 
 **TODO: sample of persistence.xml**
 
@@ -150,6 +181,8 @@ public class FacesAppConfig {
 	// replacement of 'faces-config.xml' file
 }
 ```
+
+---
 
 ### Fases-Namespaces
 
@@ -178,7 +211,9 @@ All nessesary namespaces for JSF:
 
 ```
 
-## Test-Application (JUnit 5)
+---
+
+## Test-Application
 
 - Use **JUnit 5** for unit tests.
   
