@@ -1,5 +1,7 @@
 # Jakarta-Faces-Skeleton
 
+> Provied a *reusable* **template** with minimal necessary structure.
+
 **Table of Content**
 
 * [Overview](#overview)
@@ -19,7 +21,7 @@
 ## Overview
 
 This is a *Skeleton* for an **Jakarta-Faces** application, based on **Jakarta EE** technologies.
-* The **goal** is to show the necessary structure with all required tools and (MAVEN) dependencies for any **Web Application** project.
+* The **goal** is to provied a *reusable* **template** with minimal necessary structure and all required tools and (MAVEN) dependencies for any **Web Application** project.
 
 ---
 
@@ -56,13 +58,17 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
 - **JPA 3.1** (Java Persistence API) as Persistence Layer 
 	- Implementation: Hibernate 6.1 - provide persistence
 - **Java EE Server:**
-	- Implementation: Wildfly 27.0.1 - For other compatible versions of dependencies see:
-	- "https://www.wildfly.org/news/2022/11/09/WildFly-27-Final-is-released/"
-	- "https://mvnrepository.com/artifact/org.wildfly.core/wildfly-core-component-matrix/27.0.1.Final"
+	- Implementation: [Wildfly 27.0.1](https://www.wildfly.org/news/2022/11/09/WildFly-27-Final-is-released/)
+ 	- For other compatible versions of dependencies see: [wildfly-Core-Component-Matrix](https://mvnrepository.com/artifact/org.wildfly.core/wildfly-core-component-matrix/27.0.1.Final)
 
 ---
 
 ## Project Structure
+
+The following structure shows the [common apache maven directory layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html) for Java Web-App. 
+
+**TODO: describe shortly each folder** - Why it is required  
+**TODO: describe shortly each file** - Why it is required
 
 ```text
  com.[company].[app-name]/
@@ -80,8 +86,9 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
  └── README.md
  ```
 
-**TODO: describe shortly each folder** - Why it is required  
-**TODO: describe shortly each file** - Why it is required
+- xhtml, css, js files inside the webapp folder, java files inside the java folder.
+
+
 
 ---
 
