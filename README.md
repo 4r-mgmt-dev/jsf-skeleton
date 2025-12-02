@@ -203,8 +203,8 @@ public class FacesAppConfig {
 }
 ```
 
-* For Filters and Listeners new classes with the annotations @WebFilter and @WebListener are used.
-* Beans are used for implicit navigation. faces-config can be used for explicit navigation.
+* For **Filters** and **Listeners** new classes with the annotations ```@WebFilter``` and ```@WebListener``` are used.
+* Beans are used for **implicit navigation**. ```faces-config.xml``` can be used for **explicit navigation**.
 
 Regardless of the approach an empty ```beans.xml``` is also necessary (same folder as ```web.xml```).  
 A ```faces-config.xml``` is not needed in modern projects unless for explicit navigation.  
