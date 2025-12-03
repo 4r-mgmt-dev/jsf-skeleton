@@ -9,7 +9,7 @@
 * [Config](#config)
 * [Build](#build)
 * [Optional Dependencies](#optional-dependencies)
- 
+
 ## About
 **Summary**<br/><br/>
 This is a skeleton of an Java Server Faces (JSF) application, a framework based on Java EE technologies.<br/>
@@ -115,7 +115,7 @@ Web components of Jakarta namespace<br/><br/>
 Add the following into MAVEN project ``pom.xml`` file under ``<dependencies>`` element section:
  
 ```xml
-<dependency>
+<dependency>  <!-- comment bla bal -->
 	<groupId>jakarta.platform</groupId>
 	<artifactId>jakarta.jakartaee-api</artifactId>
 	<version>10.0.0</version>
@@ -147,7 +147,7 @@ Add the following into MAVEN project ``pom.xml`` file under ``<dependencies>`` e
 ```xml
 <dependency>
     <groupId>com.h2database</groupId>
-    <artifactId>h2</artifactId>
+    <artifactId>h2</artifactId> 
     <version>2.4.240</version>
 </dependency>
  
@@ -168,15 +168,16 @@ Add the following ``persistence.xml`` file into MAVEN project under ``/src/main/
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <!-- JNDI name can be configured in WildFly standalone.xml or via CLI -->
-        <!--  legacy <jta-data-source>java:/AdminDS</jta-data-source> -->
+        <!-- legacy <jta-data-source>java:/AdminDS</jta-data-source> -->
 
         <!-- Your entity classes -->
+
         <class>br.com.xxx.User</class>
         <class>br.com.xxx.Whatever</class>
 
         <properties>
         	<property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
-    		<property name="jakarta.persistence.jdbc.url" 			value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;"/>
+    		<property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;"/>
     		<property name="jakarta.persistence.jdbc.user" value="sa"/>
     		<property name="jakarta.persistence.jdbc.password" value=""/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
