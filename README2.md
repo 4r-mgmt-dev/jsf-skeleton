@@ -191,7 +191,7 @@ Add the following ``persistence.xml`` file into MAVEN project under ``/src/main/
 - there is no xsd file for 3.1 so 3_0.xsd is used instead (may cause an error message)
 - alternatively use version="3.0"
 
-(legacy)
+**Alternative:** datasource and configuration can be done on the server site e.g. on wildfly in the standalone.xml file)
 - edit the standalone.xml to fit your database and source:
 ```xml
 <datasources>
