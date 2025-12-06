@@ -1,6 +1,6 @@
 # Jakarta-Faces-Skeleton
 
-> Provied a *reusable* **template** with minimal necessary structure.
+> Provided a *reusable* **template** with minimal necessary structure.
 
 **Table of Content**
 
@@ -13,7 +13,7 @@
 * [Persistence-Application](#persistence-application)
 * [Web-Application](#web-application)
 * [CDI-Application](#cdi-application)
-* [Fases-Application](#fases-application)
+* [Faces-Application](#faces-application)
 * [Test-Application](#test-application)
 
 ---
@@ -76,7 +76,7 @@ The following structure shows the [common apache maven directory layout](https:/
  │   ├── main/
  │   │   ├── java/
  │   │   ├── resources/
- │   │   │   └── META-INF
+ │   │   │   └── META-INF/
  │   │   │       └── persistence.xml
  │   │   └── webapp/
  │   │       └── WEB-INF/
@@ -88,7 +88,30 @@ The following structure shows the [common apache maven directory layout](https:/
 
 - xhtml, css, js files inside the webapp folder, java files inside the java folder.
 
+<details>
+Folder description (descending order):
+	
+  - **com.[company].[app-name]/:** contains all your project files 
+  - **src/:** contains your source files, to seperate your files from your build output
+  - **main/:* application specific files
+  - **test/:** unit and integration test code, test-specific resources
+  - **java/:** java application files
+  - **resources/:** config files, property files
+	- **META-INF/:** meta-data like MANIFEST.MF, config files (persistence.xml) or service files
+  - **webapp/:** web application resources
+  xhtml can be added inside here, to add css or js files create a resources/ folder and inside a css/ or js/ folder respectively
+  resources/ --> css/, js/
+  	- **WEB-INF:** folder for your webapp-config files
 
+File description:
+  - **pom.xml:** config for your maven project and build
+  - **README.md:** your project description, documentation, to-dos
+  - **persistence.xml:** config for your persistence-unit (JPA)
+  - **web.xml:** config for your webapp
+  - **beans.xml:** config for your CDI
+  - **faces-config.xml:** config for your faces-servlet
+
+</details>
 
 ---
 
@@ -101,7 +124,99 @@ The following structure shows the [common apache maven directory layout](https:/
 <details>
 	
 ```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.4r-mgmt.jsf-skeleton</groupId>
+  <artifactId>jsf-skeleton</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>jsf-skeleton Maven Webapp</name>
+  <url>http://maven.apache.org</url>
 
+<!-- add properties for easier version control -->
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>17</java.version>
+		<maven.compiler.release>17</maven.compiler.release>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<!-- By default, do not fail on missing web.xml -->
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<!-- Maven Plugins -->
+		<maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+		<maven-war-plugin.version>3.4.0</maven-war-plugin.version>
+		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+		<!-- Jakarta EE API -->
+		<jakartaee-api.version>10.0.0</jakartaee-api.version>
+		<!-- Jakarta Faces implementation-->
+		<jakarta.faces.version>4.0.0</jakarta.faces.version>
+		<!-- Primefaces -->
+		<primefaces.version>15.0.9</primefaces.version>
+
+		<!-- database -->
+ 		<h2database.version>2.4.240</h2database.version>
+  </properties>  
+ 
+  <dependencies>
+    <dependency>
+		<groupId>jakarta.platform</groupId>
+		<artifactId>jakarta.jakartaee-api</artifactId>
+		<version>${jakartaee-api.version}</version>
+		<scope>provided</scope>
+    </dependency>
+    <dependency>
+    	<groupId>org.glassfish</groupId>
+    	<artifactId>jakarta.faces</artifactId>
+    	<version>${jakarta.faces.version}</version>
+	</dependency>
+	<dependency>
+    	<groupId>com.h2database</groupId>
+    	<artifactId>h2</artifactId>
+    	<version>${h2database.version}</version>
+	</dependency>
+	<!-- optional
+    <dependency>
+    	<groupId>org.primefaces</groupId>
+    	<artifactId>primefaces</artifactId>
+    	<version>${primefaces.version}</version>
+    <classifier>jakarta</classifier>
+	</dependency> -->
+  </dependencies>
+  
+  <build>
+        <finalName>jsf-skeleton</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+        			<release>${java.version}</release>
+        			<encoding>${project.build.sourceEncoding}</encoding>
+    			</configuration>
+            </plugin>
+            
+            <plugin>
+          		<artifactId>maven-resources-plugin</artifactId>
+          		<version>${maven-resources-plugin.version}</version>
+          		<configuration>
+        			<encoding>${project.build.sourceEncoding}</encoding>
+    			</configuration>
+        	</plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>${failOnMissingWebXml}</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+        </plugins>
+   </build>
+  
+</project>
 
 
 ```
@@ -122,8 +237,54 @@ Open the details section to see the required properties:
 <details>
 	
 ```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence
+    xmlns="https://jakarta.ee/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+    version="3.0">
 
+    <persistence-unit name="admin-jta" transaction-type="JTA">
+        <!-- Jakarta EE 10 uses the Hibernate ORM Jakarta module -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
+        <!-- JNDI name configured in WildFly standalone.xml or via CLI 
+        <jta-data-source>java:/AdminDS</jta-data-source>-->
+
+        <properties>
+        	<property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
+    		<property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;"/>
+    		<property name="jakarta.persistence.jdbc.user" value="sa"/>
+    		<property name="jakarta.persistence.jdbc.password" value=""/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
+            <!-- Optional Hibernate extras -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
+```
+
+alternatively define and use the JNDI name in your server<br/>
+example in Wildfly:
+
+```xml
+<datasources>
+	<datasource jndi-name="java:/AdminDS" pool-name="AdminDS" enabled="true" use-java-context="true">
+    		<connection-url>jdbc:h2:mem:admin;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+    		<driver>h2</driver>
+    		<security>
+        		<user-name>sa</user-name>
+        		<password></password>
+    		</security>
+	</datasource>
+         <drivers>
+            <driver name="h2" module="com.h2database.h2">
+                <driver-class>org.h2.Driver</driver-class>
+            </driver>
+         </drivers>
+</datasources>
 ```
 
 </details>
@@ -165,7 +326,7 @@ To enable, add an empty ```beans.xml``` file in to the  ```webapp/WEB-INF``` fol
 
 ---
 
-## Fases-Application
+## Faces-Application
 
 Java Server Faces is a web application framework (built on top of the Servlet API) that uses facelets and allow building **XHTML web-pages**, **templates**, **managing validation** and **navigation** as well as communication with Java Beans by using **Context and Dependency Injection** (CDI). It seperates the UI (**.xhtml**) and the logic (**Java Beans**) and allows data exchange through CDI and Expression Language.
 
@@ -180,7 +341,7 @@ The the (Http) requests of Faces are handled in a lifecycle with 6 phases:
 6. Rendering the response
 ```
    
-To enable **Faces** application, add a ```faces-config.xml``` file in to the  ```webapp/WEB-INF``` folder.
+To enable a **Faces** application, add a ```faces-config.xml``` file to the  ```webapp/WEB-INF``` folder.
 
 **TODO: sample of faces-config.xml**
 
@@ -193,7 +354,7 @@ To enable **Faces** application, add a ```faces-config.xml``` file in to the  ``
 
 </details>
 
-**(optional)** - Instead of using ```faces-config.xml``` file, a programmatic approche can be used. There for create a class e.g. ```FacesAppConfig.java``` with annotations ```@FacesConfig``` and ```@ApplicationScoped```. Even this empty class enables JSF with modern features.
+**(optional)** - Instead of using ```faces-config.xml``` file, a programmatic approach can be used. There for create a class e.g. ```FacesAppConfig.java``` with annotations ```@FacesConfig``` and ```@ApplicationScoped```. Even this empty class enables JSF with modern features.
 
 ```java
 @FacesConfig
@@ -211,7 +372,7 @@ A ```faces-config.xml``` is not needed in modern projects unless for explicit na
 
 ---
 
-### Fases-Namespaces
+### Faces-Namespaces
 
 All nessesary namespaces for JSF:
 
