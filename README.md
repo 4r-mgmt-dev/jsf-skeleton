@@ -21,7 +21,7 @@
 ## Overview
 
 This is a *Skeleton* for an **Jakarta-Faces** application, based on **Jakarta EE** technologies.
-* The **goal** is to provied a *reusable* **template** with minimal necessary structure and all required tools and (MAVEN) dependencies for any **Web Application** project.
+* The **goal** is to provide a *reusable* **template** with minimal necessary structure and all required tools and (MAVEN) dependencies for any **web application** project.
 
 ---
 
@@ -38,11 +38,11 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
 
 ## Development Tools
 
-- **JDK 11+:** (Java Development Kit) [download](https://www.oracle.com/de/java/technologies/downloads)
-- **IDE: Eclipse**: (Integrated Development Environment) [download](https://www.eclipse.org/downloads/packages/)
-- **Build Tool: Maven** [download](https://maven.apache.org)
-- **Versioning System: Git** 
-- **Repository: GitHub** 
+- **JDK 11+:** (Java Development Kit) [Download](https://www.oracle.com/de/java/technologies/downloads)
+- **IDE: Eclipse**: (Integrated Development Environment) [Download](https://www.eclipse.org/downloads/packages/)
+- **Build Tool: Maven** [Download](https://maven.apache.org)
+- **Versioning System: Git** [Download](https://git-scm.com/)
+- **Repository: [GitHub](https://github.com/)**
 
 ---
 
@@ -53,10 +53,10 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
 - **CDI 4.0** (Context and Dependency Injection)
 	- Implementation: Weld 5
 - **JSF 4.0** (Java Server Faces or Jakarta-Faces)
-	- Implementation: Mojarra 4.0 or MyFaces 4.0
+	- Implementation: [Mojarra 4.0](https://github.com/eclipse-ee4j/mojarra) or [MyFaces 4.0](https://myfaces.apache.org/#/core40)
 - **EL 5.0** (Expression Language - provides an important mechanism for enabling the presentation layer)
-- **JPA 3.1** (Java Persistence API) as Persistence Layer 
-	- Implementation: Hibernate 6.1 - provide persistence
+- **JPA 3.0** (Java Persistence API) as Persistence Layer 
+	- Implementation: [Hibernate 6.1](https://hibernate.org/) - provides persistence
 - **Java EE Server:**
 	- Implementation: [Wildfly 27.0.1](https://www.wildfly.org/news/2022/11/09/WildFly-27-Final-is-released/)
  	- For other compatible versions of dependencies see: [wildfly-Core-Component-Matrix](https://mvnrepository.com/artifact/org.wildfly.core/wildfly-core-component-matrix/27.0.1.Final)
@@ -65,10 +65,7 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
 
 ## Project Structure
 
-The following structure shows the [common apache maven directory layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html) for Java Web-App. 
-
-**TODO: describe shortly each folder** - Why it is required  
-**TODO: describe shortly each file** - Why it is required
+The following structure shows the [common apache maven directory layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html) for Java web-app. 
 
 ```text
  com.[company].[app-name]/
@@ -87,6 +84,7 @@ The following structure shows the [common apache maven directory layout](https:/
  ```
 
 - xhtml, css, js files inside the webapp folder, java files inside the java folder.
+* Open the details section to see descriptions of these elements:
 
 <details>
 Folder description (descending order):
@@ -97,10 +95,10 @@ Folder description (descending order):
   - **test/:** unit and integration test code, test-specific resources
   - **java/:** java application files
   - **resources/:** config files, property files
-	- **META-INF/:** meta-data like MANIFEST.MF, config files (persistence.xml) or service files
+	- **META-INF/:** meta-data like ```MANIFEST.MF```, config files (```persistence.xml```) or service files
   - **webapp/:** web application resources
-  xhtml can be added inside here, to add css or js files create a resources/ folder and inside a css/ or js/ folder respectively
-  resources/ --> css/, js/
+  *xhtml* can be added here, to add *css* or *js* files create a resources/ folder and inside a css/ or js/ folder respectively
+  webapp --> resources/ --> css/, js/
   	- **WEB-INF:** folder for your webapp-config files
 
 File description:
@@ -109,7 +107,7 @@ File description:
   - **persistence.xml:** config for your persistence-unit (JPA)
   - **web.xml:** config for your webapp
   - **beans.xml:** config for your CDI
-  - **faces-config.xml:** config for your faces-servlet
+  - **faces-config.xml:** config for your FacesServlet
 
 </details>
 
@@ -118,8 +116,6 @@ File description:
 ## Maven-Dependencies
 
 *  Open the details section to see the ```pom.xml``` file with the required dependencies:
-
-**TODO: explain of nessesary dependencies of pom.xml in the details section**
 
 <details>
 	
@@ -153,7 +149,6 @@ File description:
 		<jakarta.faces.version>4.0.0</jakarta.faces.version>
 		<!-- Primefaces -->
 		<primefaces.version>15.0.9</primefaces.version>
-
 		<!-- database -->
  		<h2database.version>2.4.240</h2database.version>
   </properties>  
@@ -188,6 +183,7 @@ File description:
         <finalName>jsf-skeleton</finalName>
         <plugins>
             <plugin>
+				<!-- compiles the project to a specific Java version -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
@@ -206,6 +202,7 @@ File description:
         	</plugin>
 
             <plugin>
+				<!-- builds the project in a war -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${maven-war-plugin.version}</version>
@@ -232,8 +229,6 @@ To enable **Persistence-Application**, add a ```persistence.xml``` file in to th
 
 Open the details section to see the required properties:
 
-**TODO: explain the persistence.xml**
-
 <details>
 	
 ```xml
@@ -253,10 +248,12 @@ Open the details section to see the required properties:
 
         <properties>
         	<property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
+			<!-- DB loaded in memory for testing purposes -->
     		<property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;"/>
     		<property name="jakarta.persistence.jdbc.user" value="sa"/>
     		<property name="jakarta.persistence.jdbc.password" value=""/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+			<!-- if the database already exists it is updated on startup (new data may be added) -->
             <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
             <!-- Optional Hibernate extras -->
             <property name="hibernate.show_sql" value="true"/>
@@ -268,6 +265,7 @@ Open the details section to see the required properties:
 
 alternatively define and use the JNDI name in your server<br/>
 example in Wildfly:
+- edit the ```standalone.xml```
 
 ```xml
 <datasources>
@@ -293,15 +291,34 @@ example in Wildfly:
 
 ## Web-Application
 
-To enable the **Web-Application**, add the ```web.xml``` file in to the  ```webapp/WEB-INF``` folder
-* Open the details section to see the required Servlet-Mapping and configuration:
-
-**TODO: add web.xml describe shortly**
+To enable the **web-application**, add the ```web.xml``` file in to the  ```webapp/WEB-INF``` folder
+* Open the details section to see the required **servlet-mapping** and configuration:
 
 <details>
 	
 ```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
 
+    <display-name>Skeleton App</display-name>
+    <servlet>
+        <servlet-name>FacesServlet</servlet-name>
+		<!-- sets the path to the FacesServlet -->
+        <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
+		<!-- 1 means it is loaded on startup of the server -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+	<!-- maps the FacesServlet to .xhtml -->
+    <servlet-mapping>
+        <servlet-name>FacesServlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+</web-app>
 
 ```
 
@@ -313,14 +330,22 @@ To enable the **Web-Application**, add the ```web.xml``` file in to the  ```weba
 
 To enable, add an empty ```beans.xml``` file in to the  ```webapp/WEB-INF``` folder
 
-**TODO: sample of beans.xml**
-
 <details>
 	
 ```xml
-
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="https://jakarta.ee/xml/ns/jakartaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
+                           https://jakarta.ee/xml/ns/jakartaee/beans_4_0.xsd"
+       version="4.0"
+	   <!-- options: all (all types are considered as beans), annotated (only annotated beans are considered[default option]),
+	   none (no types are considered) -->
+       bean-discovery-mode="annotated">
+</beans>
 
 ```
+When the ```beans.xml``` is empty it automatically chooses the **version** and sets **bean-discovery-mode="annotated"**.
 
 </details>
 
@@ -328,9 +353,9 @@ To enable, add an empty ```beans.xml``` file in to the  ```webapp/WEB-INF``` fol
 
 ## Faces-Application
 
-Java Server Faces is a web application framework (built on top of the Servlet API) that uses facelets and allow building **XHTML web-pages**, **templates**, **managing validation** and **navigation** as well as communication with Java Beans by using **Context and Dependency Injection** (CDI). It seperates the UI (**.xhtml**) and the logic (**Java Beans**) and allows data exchange through CDI and Expression Language.
+Java Server Faces is a web application framework (built on top of the Servlet API) that uses facelets and allows building **XHTML web-pages**, **templates**, **managing validation** and **navigation** as well as communication with Java Beans by using **Context and Dependency Injection** (CDI). It seperates the UI (**.xhtml**) and the logic (**Java Beans**) and allows data exchange through CDI and Expression Language.
 
-The the (Http) requests of Faces are handled in a lifecycle with 6 phases:
+The (Http) requests of Faces are handled in a lifecycle with 6 phases:
 
 ```
 1. Restoring the component tree
@@ -341,20 +366,26 @@ The the (Http) requests of Faces are handled in a lifecycle with 6 phases:
 6. Rendering the response
 ```
    
-To enable a **Faces** application, add a ```faces-config.xml``` file to the  ```webapp/WEB-INF``` folder.
-
-**TODO: sample of faces-config.xml**
+Add a ```faces-config.xml``` file to the  ```webapp/WEB-INF``` folder.
 
 <details>
 	
 ```xml
-
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+        https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd"
+	version="4.0">
+</faces-config>
 
 ```
 
+The file is not strictly necessary for Jakarta Faces but it can handle explicit navigation, add phase-listeners etc.
+
 </details>
 
-**(optional)** - Instead of using ```faces-config.xml``` file, a programmatic approach can be used. There for create a class e.g. ```FacesAppConfig.java``` with annotations ```@FacesConfig``` and ```@ApplicationScoped```. Even this empty class enables JSF with modern features.
+**(optional)** - Instead of using ```faces-config.xml``` and ```web.xml``` files, a programmatic approach can be used. For this purpose create a class e.g. ```FacesAppConfig.java``` with annotations ```@FacesConfig``` and ```@ApplicationScoped```. Even this empty class enables JSF with modern features.
 
 ```java
 @FacesConfig
@@ -365,16 +396,13 @@ public class FacesAppConfig {
 ```
 
 * For **Filters** and **Listeners** new classes with the annotations ```@WebFilter``` and ```@WebListener``` are used.
-* Beans are used for **implicit navigation**. ```faces-config.xml``` can be used for **explicit navigation**.
-
-Regardless of the approach an empty ```beans.xml``` is also necessary (same folder as ```web.xml```).  
-A ```faces-config.xml``` is not needed in modern projects unless for explicit navigation.  
+* Beans are used for **implicit navigation**. ```faces-config.xml``` can be used for **explicit navigation** if necessary.
 
 ---
 
 ### Faces-Namespaces
 
-All nessesary namespaces for JSF:
+All necessary namespaces for JSF:
 
 ```xml
 <html xmlns="http://www.w3.org/1999/xhtml"        //marks the page as xhtml
@@ -387,21 +415,28 @@ All nessesary namespaces for JSF:
 
 ### PrimeFaces Namespaces
 
-- PrimeFaces as a dependency (':p' namespace)
+- [PrimeFaces](https://github.com/primefaces/primefaces) as a dependency (':p' namespace)
+- [Tutorial](https://www.mastertheboss.com/category/web/primefaces/)
 
 ```xml
-
+<html xmlns:p="http://primefaces.org/ui">
+</html>
 ```
 
 ### OmniFaces Namespaces (Optional)
 
+- [OmniFaces](https://omnifaces.org/) as a dependency (':o' and ':of' namespaces)
 ```xml
-
+<html xmlns:o="http://omnifaces.org/ui"
+xmlns:of="http://omnifaces.org/functions">
+</html>
 ```
+- adds functionality to *PrimeFaces*
 
 ---
 
 ## Test-Application
 
-- Use **JUnit 5** for unit tests.
+- Use **JUnit 5** as a test framework for unit tests.
+- **Mockito** as a mocking library
   
