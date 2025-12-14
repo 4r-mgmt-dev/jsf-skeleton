@@ -77,31 +77,34 @@ The following structure shows the [common apache maven directory layout](https:/
  │   │   │       └── persistence.xml
  │   │   └── webapp/
  │   │       ├── resources/
- │   │       │    ├── css/
- │   │       │    └── script/
+ │   │       │   ├── icon/
+ │   │       │   ├── script/
+ │   │       │   ├── style/
+ │   │       │   └── picture/
  │   │       └── WEB-INF/
  │   │           ├── web.xml
- │   └── test/   ├── beans.xml
- ├── pom.xml     └── faces-config.xml
+ │   │           ├── beans.xml
+ │   │           └── faces-config.xml
+ │   └── test/   
+ ├── pom.xml     
  └── README.md
  ```
 
-* Source Code files **.java** belongs inside the **src/main/java** folder, **.xhtml** inside **webapp/**, **.css**, **.js** files inside the **webapp/resources** folder.
-* Open the details section to see descriptions of these elements:
+Source code files **.java** belongs inside the **src/main/java** folder, **.xhtml** inside **webapp/** folder, **.css**, **.js** files inside the **webapp/resources** folder. Open the details section to see descriptions of these elements:
 
 <details>
 Folder description (descending order):
 	
-  - **com.[company].[app-name]/:** contains all your project files 
+  - **com.[company].[app-name]/:** the root *namespece* contains all your project files 
   - **src/:** contains your source files, to seperate your files from your build output
-  - **main/:* application specific files
+  - **main/:** application specific files
   - **test/:** unit and integration test code, test-specific resources
   - **java/:** java application files
   - **resources/:** config files, property files
-	- **META-INF/:** meta-data like ```MANIFEST.MF```, config files (```persistence.xml```) or service files
+	- **META-INF/:** meta-data like `MANIFEST.MF`, config files (`persistence.xml`) or service files
   - **webapp/:** web application resources
-  *xhtml* can be added here, to add *css* or *js* files create a resources/ folder and inside a css/ or js/ folder respectively
-  webapp --> resources/ --> css/, js/
+  *.xhtml* can be added here, to add *.css* or *.js* files create a **resources/** folder and inside a **style/** or **script/** folder respectively
+  webapp --> resources/ --> script/, style/
   	- **WEB-INF:** folder for your webapp-config files
 
 File description:
@@ -110,7 +113,7 @@ File description:
   - **persistence.xml:** config for your persistence-unit (JPA)
   - **web.xml:** config for your webapp
   - **beans.xml:** config for your CDI
-  - **faces-config.xml:** config for your FacesServlet
+  - **faces-config.xml:** config for your `FacesServlet`
 
 </details>
 
@@ -118,7 +121,7 @@ File description:
 
 ## Maven-Dependencies
 
-*  Open the details section to see the ```pom.xml``` file with the required dependencies:
+*  Open the details section to see the `pom.xml` file with the required dependencies:
 
 <details>
 	
