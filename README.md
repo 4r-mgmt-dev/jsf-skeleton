@@ -65,7 +65,7 @@ The application can be started as a *WAR* on a Jakarta EE compliant server (e.g.
 
 ## Project Structure
 
-The following structure shows the [common apache maven directory layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html) for Java web-app. 
+The following structure shows the [common apache maven directory layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html) for Java web-app.
 
 ```text
  com.[company].[app-name]/
@@ -76,6 +76,9 @@ The following structure shows the [common apache maven directory layout](https:/
  │   │   │   └── META-INF/
  │   │   │       └── persistence.xml
  │   │   └── webapp/
+ │   │       ├── resources/
+ │   │       │    ├── css/
+ │   │       │    └── script/
  │   │       └── WEB-INF/
  │   │           ├── web.xml
  │   └── test/   ├── beans.xml
@@ -83,7 +86,7 @@ The following structure shows the [common apache maven directory layout](https:/
  └── README.md
  ```
 
-- xhtml, css, js files inside the webapp folder, java files inside the java folder.
+* .java files inside the **src/main/java** folder, .xhtml inside **webapp/**, .css, .js files inside the **webapp/resources** folder.
 * Open the details section to see descriptions of these elements:
 
 <details>
