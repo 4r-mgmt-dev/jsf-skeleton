@@ -86,7 +86,7 @@ The following structure shows the [common apache maven directory layout](https:/
  └── README.md
  ```
 
-* .java files inside the **src/main/java** folder, .xhtml inside **webapp/**, .css, .js files inside the **webapp/resources** folder.
+* Source Code files **.java** belongs inside the **src/main/java** folder, **.xhtml** inside **webapp/**, **.css**, **.js** files inside the **webapp/resources** folder.
 * Open the details section to see descriptions of these elements:
 
 <details>
